@@ -6,7 +6,8 @@ require 'open-uri'
 
 Redmine::Plugin.register :redmine_gist do
   name 'Redmine Wiki HTML Util'
-  author 'Arlo Carreon <arlo.carreon@gmail.com>'
+  author 'Arlo Carreon'
+  author_url 'http://www.arlocarreon.com/'
   description 'Allows you to embedd RAW HTML into your wiki, load stylesheets and javascript.  Made for html/css/js demo wikis'
   version '0.0.1'
 
