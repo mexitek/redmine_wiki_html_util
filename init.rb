@@ -14,7 +14,8 @@ Redmine::Plugin.register :redmine_gist do
   Redmine::WikiFormatting::Macros.register do
     desc "Embed raw html"
     macro :html do |obj, args|
-        tmp = args[0].gsub("[","<")
+        tmp = args[0].gsub("<br>","");
+        tmp = tmp.gsub("[","<")
         tmp = tmp.gsub("]",">")
         result = "<div>"+tmp+"</div>"
         result
