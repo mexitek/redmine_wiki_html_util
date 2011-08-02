@@ -29,7 +29,7 @@ Redmine::Plugin.register :redmine_gist do
 	Redmine::WikiFormatting::Macros.register do
     desc "Insert a CSS file into the DOM"
     macro :css_url do |obj, args|
-        result = "<script> var head = document.getElementsByTag('head')[0], t = document.createElement('link'); t.href = 'args[0]'; head.appendChild(t); </script>"
+        result = "<script> var head = document.getElementsByTagName('head')[0], t = document.createElement('link'); t.href = 'args[0]'; head.appendChild(t); </script>"
         result
     end	
   end
@@ -45,7 +45,7 @@ Redmine::Plugin.register :redmine_gist do
 	Redmine::WikiFormatting::Macros.register do
     desc "Insert a JS file into the DOM"
     macro :js_url do |obj, args|
-        result = "<script> var head = document.getElementsByTag('head')[0], t = document.createElement('script'); t.src = 'args[0]'; head.appendChild(t); </script>"
+        result = "<script> var head = document.getElementsByTagName('head')[0], t = document.createElement('script'); t.src = 'args[0]'; head.appendChild(t); </script>"
         result
     end	
   end
