@@ -21,7 +21,7 @@ Redmine::Plugin.register :redmine_gist do
 	Redmine::WikiFormatting::Macros.register do
     desc "Embed raw css"
     macro :css do |obj, args|
-        result = "<style>args[0]</style>"
+        result = "<style>"+args[0]+"</style>"
         result
     end	
   end
@@ -37,7 +37,7 @@ Redmine::Plugin.register :redmine_gist do
 	Redmine::WikiFormatting::Macros.register do
     desc "Embed raw js"
     macro :js do |obj, args|
-        result = "<script>args[0]</script>"
+        result = "<script>"+args[0]+"</script>"
         result
     end	
   end
