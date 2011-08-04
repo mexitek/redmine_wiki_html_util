@@ -14,6 +14,7 @@ Redmine::Plugin.register :redmine_gist do
   Redmine::WikiFormatting::Macros.register do
     desc "Embed raw html"
     macro :html do |obj, args|
+        # I also need to get rid of newlines here. How?
         result = CGI::unescapeHTML(args.join(","))
         return result
     end	
