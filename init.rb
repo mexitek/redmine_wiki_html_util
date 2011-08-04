@@ -15,7 +15,7 @@ Redmine::Plugin.register :redmine_gist do
     desc "Embed raw html"
     macro :html do |obj, args|
         result = CGI::unescapeHTML(args.join(","))
-        return result.gsub!(/[\n]+/, "")
+        return result
     end	
   end
 	
