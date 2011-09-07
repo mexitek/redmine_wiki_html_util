@@ -1,3 +1,23 @@
+h1. What does it do?
+
+This redmine plugin exposes extra macros in your redmine wikis. These macros are used to dynamically load css file, js file or inject raw HTML into your wiki page.
+
+h2. Exposed Macros
+
+* css_url()
+* js_url()
+* html()
+
+h1. Examples
+
+@{{html(
+<ul>
+   <li>option 1</li>
+   <li>option 2</li>
+   <li>option 3</li>
+</ul>
+)}}@
+
 h1. See it in action
 
 Visit the original blog post for a video of the plugin in action.
