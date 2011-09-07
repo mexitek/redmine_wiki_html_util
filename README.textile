@@ -10,18 +10,18 @@ h2. Exposed Macros
 
 h1. Examples
 
-<pre><code>{{html(
+@{{html(
 <ul>
-   <li>option 1</li>
-   <li>option 2</li>
-   <li>option 3</li>
+   <li>option 1</li>
+   <li>option 2</li>
+   <li>option 3</li>
 </ul>
-)}}</code></pre>
+)}}@
 
 h1. See it in action
 
 Visit the original blog post for a video of the plugin in action.
-http://www.arlocarreon.com/blog/redmine/redmine-wiki-html-utility/
+"arlocarreon.com/blog/redmine/redmine-wiki-html-utility/":http://www.arlocarreon.com/blog/redmine/redmine-wiki-html-utility/
 
 h1. Installation
 
