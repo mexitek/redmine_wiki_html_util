@@ -1,0 +1,15 @@
+h1. See it in action
+
+Visit the original blog post for a video of the plugin in action.
+http://www.arlocarreon.com/blog/redmine/redmine-wiki-html-utility/
+
+h1. Installation
+
+Navigate to:
+@[redmine_install_path]/vendors/plugins@
+
+Clone this repo:
+@git clone git://github.com/mexitek/redmine_wiki_html_util.git@
+
+Restart Redmine (example below is using bitnami stack): 
+@sudo /etc/init.d/bitnami restart@
