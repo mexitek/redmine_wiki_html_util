@@ -34,5 +34,5 @@ Clone this repo:
 Restart Redmine (example below is using bitnami stack): 
 @sudo /etc/init.d/bitnami restart@
 
-h1. License "arlo.mit-license.org":http://arlo.mit-license.org
+h1. License: "arlo.mit-license.org":http://arlo.mit-license.org
  
