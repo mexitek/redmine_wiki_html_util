@@ -14,8 +14,9 @@ Redmine::Plugin.register :redmine_gist do
   Redmine::WikiFormatting::Macros.register do
     desc "Embed raw html"
     macro :html do |obj, args|
-        # I also need to get rid of newlines here. How?
-        result = CGI::unescapeHTML(args.join(","))
+	      result = args.join(",")
+        result = result.gsub(/<\/?[^>]*>/, "")
+	      result = CGI::unescapeHTML(result)
         return result
     end	
   end
@@ -23,7 +24,11 @@ Redmine::Plugin.register :redmine_gist do
 	Redmine::WikiFormatting::Macros.register do
     desc "Embed raw css"
     macro :css do |obj, args|
-        result = "<style>"+args[0]+"</style>"
+        result = args[0]
+	      result = result.gsub(/\[/,'{')
+	      result = result.gsub(/\]/,'}')
+	      result = result.gsub(/<\/?[^>]*>/, "")
+	      result = "<style type=\"text/css\">"+result+"</style>"
         result
     end	
   end
