@@ -44,7 +44,11 @@ Redmine::Plugin.register :redmine_gist do
 	Redmine::WikiFormatting::Macros.register do
     desc "Embed raw js"
     macro :js do |obj, args|
-        result = "<script>"+args[0]+"</script>"
+        result = args[0]
+        result = result.gsub(/\[/,'{')
+	result = result.gsub(/\]/,'}')
+	result = result.gsub(/<\/?[^>]*>/, "")
+	result = "<script>"+result+"</script>"
         result
     end	
   end
