@@ -18,6 +18,19 @@ h1. Examples
 </ul>
 )}}</code></pre>
 
+h3. Beta Macros
+You can also use <code>css()</code> macro to embedd raw CSS into the middle of a wiki page. You must replace all <strong>{ }</strong> with <strong>[ ]</strong>.
+
+<pre><code>{{css(
+.fooClass[  
+  color:red;
+  padding:15px;
+]
+#barID[
+  margin-left:15px;
+]
+)}}</code></pre>
+
 h1. See it in action
 
 Visit the original blog post for a video of the plugin in action.
