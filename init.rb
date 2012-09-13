@@ -14,47 +14,87 @@ Redmine::Plugin.register :redmine_gist do
   Redmine::WikiFormatting::Macros.register do
     desc "Embed raw html"
     macro :html do |obj, args|
-	      result = args.join(",")
+      page = obj.page
+      raise 'Page not found' if page.nil?
+
+      # For security, only allow insertion on protected (locked) wiki pages
+      if page.protected 
+        result = args.join(",")
         result = result.gsub(/<\/?[^>]*>/, "")
-	      result = CGI::unescapeHTML(result)
+        result = CGI::unescapeHTML(result)
         return result
-    end	
+      else
+        return "<!-- Macro removed due to wiki page being unprotected -->"
+      end
+    end 
   end
-	
-	Redmine::WikiFormatting::Macros.register do
+        
+        Redmine::WikiFormatting::Macros.register do
     desc "Embed raw css"
     macro :css do |obj, args|
+      page = obj.page
+      raise 'Page not found' if page.nil?
+
+      # For security, only allow insertion on protected (locked) wiki pages
+      if page.protected 
         result = args[0]
-	      result = result.gsub(/\[/,'{')
-	      result = result.gsub(/\]/,'}')
-	      result = result.gsub(/<\/?[^>]*>/, "")
-	      result = "<style type=\"text/css\">"+result+"</style>"
-        result
-    end	
+        result = result.gsub(/\[/,'{')
+        result = result.gsub(/\]/,'}')
+        result = result.gsub(/<\/?[^>]*>/, "")
+        result = "<style type=\"text/css\">"+result+"</style>"        
+        return result
+      else
+        return "<!-- Macro removed due to wiki page being unprotected -->"
+      end
+    end 
   end
-	
-	Redmine::WikiFormatting::Macros.register do
+        
+        Redmine::WikiFormatting::Macros.register do
     desc "Insert a CSS file into the DOM"
     macro :css_url do |obj, args|
+      page = obj.page
+      raise 'Page not found' if page.nil?
+
+      # For security, only allow insertion on protected (locked) wiki pages
+      if page.protected 
         result = "<script> var head = document.getElementsByTagName('head')[0], t = document.createElement('link'); t.href = "+args[0]+"; t.media='all'; t.rel='stylesheet'; head.appendChild(t); </script>"
-        result
-    end	
+        return result
+      else
+        return "<!-- Macro removed due to wiki page being unprotected -->"
+      end
+    end 
   end
-	
-	Redmine::WikiFormatting::Macros.register do
+        
+        Redmine::WikiFormatting::Macros.register do
     desc "Embed raw js"
     macro :js do |obj, args|
-	result = "<script>"+args[0]+"</script>"
-        result
-    end	
+      page = obj.page
+      raise 'Page not found' if page.nil?
+
+      # For security, only allow insertion on protected (locked) wiki pages
+      if page.protected 
+        result = "<script>"+args[0]+"</script>"
+        return result
+      else
+        return "<!-- Macro removed due to wiki page being unprotected -->"
+      end
+    end 
   end
-	
-	Redmine::WikiFormatting::Macros.register do
+        
+        Redmine::WikiFormatting::Macros.register do
     desc "Insert a JS file into the DOM"
     macro :js_url do |obj, args|
+      page = obj.page
+      raise 'Page not found' if page.nil?
+
+      # For security, only allow insertion on protected (locked) wiki pages
+      if page.protected 
         result = "<script> var head = document.getElementsByTagName('head')[0], t = document.createElement('script'); t.src = "+args[0]+"; t.type='text/javascript'; head.appendChild(t); </script>"
-        result
-    end	
+        return result
+      else
+        return "<!-- Macro removed due to wiki page being unprotected -->"
+      end
+    end 
   end
-	
+        
 end
