@@ -7,29 +7,36 @@ h2. Exposed Macros
 * css_url()
 * js_url()
 * html()
+* css()
+* js()
 
 h1. Examples
 
-<pre><code>{{html(
+<pre><code>{{html
 <ul>
    <li>option 1</li>
    <li>option 2</li>
    <li>option 3</li>
 </ul>
-)}}</code></pre>
+}}</code></pre>
 
-h3. Beta Macros
-You can also use <code>css()</code> macro to embedd raw CSS into the middle of a wiki page. You must replace all <strong>{ }</strong> with <strong>[ ]</strong>.
+You can also use <code>css()</code> macro to embedd raw CSS into the middle of a wiki page.
 
-<pre><code>{{css(
-.fooClass[  
+<pre><code>{{css
+.fooClass{
   color:red;
   padding:15px;
-]
-#barID[
+}
+#barID{
   margin-left:15px;
-]
-)}}</code></pre>
+}
+}}</code></pre>
+
+Include external static assets to your wiki page
+
+<pre><code>{{css_url('https://rawgithub.com/twbs/bootstrap/master/dist/css/bootstrap.min.css')}}
+{{js_url('https://rawgithub.com/twbs/bootstrap/master/dist/js/bootstrap.min.js')}}
+</code></pre>
 
 h1. See it in action
 
@@ -39,7 +46,7 @@ Visit the original blog post for a video of the plugin in action.
 h1. Installation
 
 Navigate to:
-@[redmine_install_path]/vendors/plugins@
+@[redmine_install_path]/plugins@
 
 Clone this repo:
 @git clone git://github.com/mexitek/redmine_wiki_html_util.git@
