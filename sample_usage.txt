@@ -1,0 +1,44 @@
+h1. Testing Plain HTML()
+
+Below is a test for only the html(), js(), css(), css_url() and js_url() macros.
+
+h2. HTML with line breaks
+
+{{html
+<ul>
+   <li>option 1</li>
+   <li>option 2</li>
+   <li>option 3</li>
+</ul>
+}}
+
+h2. HTML as oneliner
+
+{{html(<ul><li>option 1</li><li>option 2</li><li>option 3</li></ul>)}}
+
+h2. Raw js() macro
+
+Inserting javascript to alert a message: <pre>alert('js() is working');</pre>
+
+{{js
+alert("js() is working");
+}}
+
+h2. Raw css() macro
+
+Inserting RAW CSS to turn LI blue when in a UL of class rawcss
+{{css
+.rawcss li{ color:blue; }
+}}
+{{html(<ul class="rawcss"><li>option 1</li><li>option 2</li><li>option 3</li></ul>)}}
+
+h2. Insert external JS and CSS files
+
+Trying: 
+- https://rawgithub.com/twbs/bootstrap/master/dist/css/bootstrap.min.css
+- https://rawgithub.com/twbs/bootstrap/master/dist/js/bootstrap.min.js
+
+Check the live DOM for these files at the bottom of the <code><head></code> section.
+
+{{css_url('https://rawgithub.com/twbs/bootstrap/master/dist/css/bootstrap.min.css')}}
+{{js_url('https://rawgithub.com/twbs/bootstrap/master/dist/js/bootstrap.min.js')}}

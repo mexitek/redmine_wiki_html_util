@@ -13,16 +13,14 @@ Redmine::Plugin.register :redmine_gist do
 
   Redmine::WikiFormatting::Macros.register do
     desc "Embed raw html\nUsage:\n<pre>{{html\nHTML CODE\n}}</pre>"
-    macro :html do |obj, args, text|
+    macro :html, :parse_args => false do |obj, args, text|
       page = obj.page
       raise 'Page not found' if page.nil?
 
       # For security, only allow insertion on protected (locked) wiki pages
-      if page.protected 
-        #result = args.join(",")
-        #result = result.gsub(/<\/?[^>]*>/, "")
-        #result = CGI::unescapeHTML(result)
-        result = "#{ CGI::unescapeHTML(text) }".html_safe
+      if page.protected
+        content = text || args 
+        result = "#{ CGI::unescapeHTML(content) }".html_safe
 	return result
       else
         return "<!-- Macro removed due to wiki page being unprotected -->"
@@ -32,17 +30,15 @@ Redmine::Plugin.register :redmine_gist do
         
         Redmine::WikiFormatting::Macros.register do
     desc "Embed raw css"
-    macro :css do |obj, args|
+    macro :css, :parse_args => false do |obj, args, text|
       page = obj.page
       raise 'Page not found' if page.nil?
 
       # For security, only allow insertion on protected (locked) wiki pages
       if page.protected 
-        result = args[0]
-        result = result.gsub(/\[/,'{')
-        result = result.gsub(/\]/,'}')
-        result = result.gsub(/<\/?[^>]*>/, "")
-        result = "<style type=\"text/css\">"+result+"</style>"        
+        content = text || args 
+        content = "<style type=\"text/css\">"+content+"</style>"        
+        result = "#{ CGI::unescapeHTML(content) }".html_safe
         return result
       else
         return "<!-- Macro removed due to wiki page being unprotected -->"
@@ -69,13 +65,15 @@ Redmine::Plugin.register :redmine_gist do
         
         Redmine::WikiFormatting::Macros.register do
     desc "Embed raw js"
-    macro :js do |obj, args|
+    macro :js, :parse_args => false do |obj, args, text|
       page = obj.page
       raise 'Page not found' if page.nil?
 
       # For security, only allow insertion on protected (locked) wiki pages
-      if page.protected 
-        result = "<script>"+args[0]+"</script>"
+      if page.protected
+        content = text || args 
+        content = "<script>"+content+"</script>"
+        result = "#{ CGI::unescapeHTML(content) }".html_safe
 	return result
       else
         return "<!-- Macro removed due to wiki page being unprotected -->"
