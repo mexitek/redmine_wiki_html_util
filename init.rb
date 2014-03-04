@@ -4,7 +4,7 @@
 require 'redmine'
 require 'open-uri'
 
-Redmine::Plugin.register :redmine_gist do
+Redmine::Plugin.register :redmine_wiki_html_util do
   name 'Redmine Wiki HTML Util'
   author 'Arlo Carreon'
   author_url 'http://www.arlocarreon.com/blog/redmine/redmine-wiki-html-utility/'
